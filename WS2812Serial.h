@@ -40,6 +40,9 @@ public:
 		numled(num), pin(pin), config(cfg),
 		frameBuffer((uint8_t *)fb), drawBuffer((uint8_t *)db) {
 	}
+	~WS2812Serial() {
+		delete dma;
+	}
 	bool begin();
 	void setPixel(uint32_t num, int color) {
 		if (num >= numled) return;
